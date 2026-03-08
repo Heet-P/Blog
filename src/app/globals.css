@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@theme {
+  --color-root-bg: var(--bg);
+  --color-root-surface: var(--surface);
+  --color-root-text: var(--text);
+  --color-root-muted: var(--muted);
+  --color-root-accent: var(--accent);
+  --color-root-accent-hover: var(--accent-hover);
+
+  --font-syne: var(--font-syne);
+  --font-commit-mono: var(--font-commit-mono);
+}
+
+:root {
+  --bg: #F5F0E8;
+  --surface: #FAF7F2;
+  --text: #1A1410;
+  --muted: #3D3530;
+  --accent: #C4622D;
+  --accent-hover: #E8845A;
+}
+
+[data-theme="dark"] {
+  --bg: #141210;
+  --surface: #1E1B18;
+  --text: #F0EBE3;
+  --muted: #B5A99A;
+  --accent: #E8845A;
+  --accent-hover: #F5A07A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  font-family: var(--font-syne), sans-serif;
+}
+
+/* SVG noise texture overlay on body via CSS ::before pseudo-element with low opacity */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  z-index: 50;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text);
+  border: 1px solid var(--bg);
+}
+
+/* Terracotta pinstripe repeating bar at very top */
+.pinstripe-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(45deg,
+      var(--accent),
+      var(--accent) 5px,
+      transparent 5px,
+      transparent 10px);
+  z-index: 100;
+}
+
+/* Skewbrutalism utility classes */
+.brutal-border {
+  border: 2.5px solid var(--text);
+  border-radius: 0;
+}
+
+.brutal-shadow {
+  box-shadow: 4px 4px 0 var(--text);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brutal-shadow:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--text);
+}
+
+.brutal-shadow:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--text);
+}
+
+.brutal-skew {
+  transform: skewX(-1.5deg);
+}
+
+.brutal-skew:hover {
+  transform: skewX(-1.5deg) translate(-2px, -2px);
+}
+
+.brutal-skew:active {
+  transform: skewX(-1.5deg) translate(2px, 2px);
+}
+
+/* Inputs get terracotta box shadow on focus */
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 4px 4px 0 var(--accent);
+  border-color: var(--accent);
+}
+
+/* Headings font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-syne), sans-serif;
+  margin: 0;
+}
+
+code,
+pre,
+.font-mono {
+  font-family: var(--font-commit-mono), monospace;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.7s ease-out forwards;
+}
