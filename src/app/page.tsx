@@ -24,10 +24,12 @@ export default async function Home() {
             Welcome to the terminal
           </div>
           <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black brutal-skew leading-[0.9] mb-8 uppercase">
-            BYTE<br /><span className="text-[var(--accent)]">//</span>BRAIN
+            BYTE<br /><span className="text-[var(--accent)]">BRAIN</span>
           </h1>
+          <p className="text-xl text-[var(--muted)] mb-10 max-w-md leading-relaxed">-Heet Parikh</p>
           <p className="text-xl text-[var(--muted)] mb-10 max-w-md leading-relaxed">
-            Tech advice, architectural rants, and performance deep dives for the modern full-stack developer.
+            Tech advice / rants, and  deep dives in my learnings as a developer.<br></br>
+            Documenting what i find interesting and explore in this ever changing AI Era.
           </p>
 
           <div className="flex gap-6">
@@ -54,7 +56,7 @@ export default async function Home() {
   const thoughts = await db
     .select(entropy)
     .from('mind')
-    .where('coffee', '>', 0);
+    .where('monster', '>', 0);
     
   return {
     status: 200,

@@ -41,8 +41,8 @@ export default function RootLayout({
           </main>
           <footer className="border-t-[2.5px] border-[var(--text)] py-8 mt-16 bg-[var(--surface)] text-center">
             <div className="font-mono text-sm uppercase tracking-wider brutal-skew inline-block px-4 py-2 border-[2.5px] border-[var(--text)] shadow-[4px_4px_0_var(--text)] bg-[var(--bg)]">
-              BYTE//BRAIN &copy; 2026<br />
-              No cookies. No tracking. Just bytes.
+              BYTE//BRAIN &copy; 2026 - Heet Parikh<br />
+              No cookies. Just bytes.
             </div>
           </footer>
         </ThemeProvider>
